@@ -1,0 +1,25 @@
+
+##############################################################
+#	file1b.gen 12/03/2026 11:14:09    errors
+##############################################################
+git hash : 0e4e6a608eeee06956095d2f2ad315abdb092777
+Warning !
+Unknown option/flag found in generation file : useXML
+
+
+	Elimination of the superfluous equations.....................
+
+
+		Maximum simultaneous symbolic expressions :  15622
+
+		Maximum number of allocated Kbytes :  732
+
+
+	The symbolic equations have been generated 
+	in the directory: /usr/local/robotran/users/LEPL1504/upload/
+
+
+ 		*** Generation symbolique reussie ! ***
+
+
+
