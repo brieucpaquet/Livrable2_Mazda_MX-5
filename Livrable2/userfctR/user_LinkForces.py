@@ -34,4 +34,36 @@ def user_LinkForces(Z, Zd, mbs_data, tsim, identity):
     # Z0= 0.1  #m
     # Flink = k*(Z-Z0)
 
+    Link_Suspension = mbs_data.link_id["Ressort_AV_G"]
+    
+    if (identity == Link_Suspension):
+        K = 1000 #N/m
+        D = 100 #N.s/m
+        L0 = 0.1 #m
+        Flink = K*(Z-L0)+D*Zd
+
+    Link_Suspension = mbs_data.link_id["Ressort_AV_D"]
+
+    if (identity == Link_Suspension):
+        K = 1000 #N/m
+        D = 100 #N.s/m
+        L0 = 0.1 #m
+        Flink = K*(Z-L0)+D*Zd
+
+    Link_Suspension = mbs_data.link_id["Ressort_AR_G"]
+
+    if (identity == Link_Suspension):
+        K = 1000 #N/m
+        D = 100 #N.s/m
+        L0 = 0.1 #m
+        Flink = K*(Z-L0)+D*Zd
+
+    Link_Suspension = mbs_data.link_id["Ressort_AR_D"]
+
+    if (identity == Link_Suspension):
+        K = 1000 #N/m
+        D = 100 #N.s/m
+        L0 = 0.1 #m
+        Flink = K*(Z-L0)+D*Zd
+
     return Flink
