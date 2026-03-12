@@ -339,8 +339,8 @@
         <pointname>Pt_Ressort_AR_G</pointname>
         <coordinates>
           <x>-1.155</x>
-          <y>-0.2925</y>
-          <z>-0.51</z>
+          <y>-0.4</y>
+          <z>0.65</z>
         </coordinates>
         <graphics>
           <x2D>
@@ -372,9 +372,9 @@
       <point>
         <pointname>Pt_Bras_sup_AR_D</pointname>
         <coordinates>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
+          <x>-1.155</x>
+          <y>0.45</y>
+          <z>0.42</z>
         </coordinates>
         <graphics>
           <x2D>
@@ -389,9 +389,9 @@
       <point>
         <pointname>Pt_Ressort_AR_D</pointname>
         <coordinates>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
+          <x>-1.155</x>
+          <y>0.4</y>
+          <z>0.65</z>
         </coordinates>
         <graphics>
           <x2D>
@@ -406,9 +406,9 @@
       <point>
         <pointname>Pt_Bras_inf_AR_D</pointname>
         <coordinates>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
+          <x>-1.155</x>
+          <y>0.35</y>
+          <z>0.18</z>
         </coordinates>
         <graphics>
           <x2D>
@@ -423,15 +423,15 @@
       <point>
         <pointname>Pt_Barre_Liaison_AR_G</pointname>
         <coordinates>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
+          <x>-1.25</x>
+          <y>-0.3</y>
+          <z>0.25</z>
         </coordinates>
         <graphics>
           <x2D>
             <position>
-              <x>720.0</x>
-              <y>499.0</y>
+              <x>727.0</x>
+              <y>518.0</y>
             </position>
           </x2D>
           <x3D />
@@ -1132,8 +1132,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>922.0</x>
-              <y>318.0</y>
+              <x>928.0</x>
+              <y>317.0</y>
             </position>
           </x2D>
           <x3D>
@@ -1158,8 +1158,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>1086.0</x>
-              <y>312.0</y>
+              <x>1092.0</x>
+              <y>311.0</y>
             </position>
           </x2D>
           <x3D />
@@ -1175,8 +1175,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>990.0</x>
-              <y>275.0</y>
+              <x>996.0</x>
+              <y>274.0</y>
             </position>
           </x2D>
           <x3D />
@@ -2366,7 +2366,7 @@
         <pointname>Point_1</pointname>
         <coordinates>
           <x>0.0</x>
-          <y>0.0</y>
+          <y>-0.25</y>
           <z>0.0</z>
         </coordinates>
         <graphics>
@@ -2454,7 +2454,7 @@
         <pointname>Point_0</pointname>
         <coordinates>
           <x>0.0</x>
-          <y>0.0</y>
+          <y>0.23</y>
           <z>0.0</z>
         </coordinates>
         <graphics>
@@ -2559,8 +2559,8 @@
         <pointname>Point_0</pointname>
         <coordinates>
           <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
+          <y>0.02</y>
+          <z>-0.27</z>
         </coordinates>
         <graphics>
           <x2D>
@@ -2576,8 +2576,8 @@
         <pointname>Pt_Roue_AR_D</pointname>
         <coordinates>
           <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
+          <y>0.0725</y>
+          <z>-0.131</z>
         </coordinates>
         <graphics>
           <x2D>
@@ -2723,8 +2723,8 @@
         <pointname>Point_0</pointname>
         <coordinates>
           <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
+          <y>0.35</y>
+          <z>-0.03</z>
         </coordinates>
         <graphics>
           <x2D>
@@ -2740,7 +2740,7 @@
         <pointname>Point_1</pointname>
         <coordinates>
           <x>0.0</x>
-          <y>0.0</y>
+          <y>0.25</y>
           <z>0.0</z>
         </coordinates>
         <graphics>
@@ -2808,8 +2808,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>620.0</x>
-              <y>495.0</y>
+              <x>608.0</x>
+              <y>493.0</y>
             </position>
           </x2D>
           <x3D>
@@ -2834,8 +2834,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>528.0</x>
-              <y>496.0</y>
+              <x>531.0</x>
+              <y>456.0</y>
             </position>
           </x2D>
           <x3D />
@@ -2851,8 +2851,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>661.0</x>
-              <y>507.0</y>
+              <x>664.0</x>
+              <y>458.0</y>
             </position>
           </x2D>
           <x3D />
@@ -2861,8 +2861,8 @@
       <graphics>
         <x2D>
           <position>
-            <x>-105.0</x>
-            <y>-38.0</y>
+            <x>-88.0</x>
+            <y>-78.0</y>
           </position>
           <name_pos>
             <x>0.0</x>
@@ -2875,20 +2875,20 @@
           </size>
           <control_points>
             <control_point>
-              <x>51.0</x>
-              <y>-38.0</y>
+              <x>68.0</x>
+              <y>-78.0</y>
             </control_point>
             <control_point>
-              <x>51.0</x>
-              <y>21.0</y>
+              <x>68.0</x>
+              <y>-19.0</y>
             </control_point>
             <control_point>
-              <x>-105.0</x>
-              <y>21.0</y>
+              <x>-88.0</x>
+              <y>-19.0</y>
             </control_point>
             <control_point>
-              <x>-105.0</x>
-              <y>-38.0</y>
+              <x>-88.0</x>
+              <y>-78.0</y>
             </control_point>
           </control_points>
           <angle>0.0</angle>
@@ -3386,6 +3386,30 @@
           <x>5.0</x>
           <y>5.0</y>
           <z>5.0</z>
+        </position>
+        <target>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+        </target>
+        <up>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>1.0</z>
+        </up>
+        <projection>perspective</projection>
+        <scale>1.0</scale>
+        <fieldOfView>0.785</fieldOfView>
+        <frontClipDst>0.01</frontClipDst>
+        <backClipDst>50.0</backClipDst>
+      </viewpoint>
+      <viewpoint>
+        <name>New_Viewpoint</name>
+        <joint>base</joint>
+        <position>
+          <x>2.0</x>
+          <y>2.0</y>
+          <z>2.0</z>
         </position>
         <target>
           <x>0.0</x>
