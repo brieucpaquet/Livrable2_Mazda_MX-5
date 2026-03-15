@@ -1,51 +1,56 @@
 # -*- coding: utf-8 -*-
 import numpy as np
+from mbs_tgc import tgc_car_kine_wheel, tgc_bakker_contact
+from MBsysPy import matrix_vector_product
 
 def user_ExtForces(PxF, RxF, VxF, OMxF, AxF, OMPxF, mbs_data, tsim, ixF):
     Fx = Fy = Fz = Mx = My = Mz = 0.0
     idpt = mbs_data.xfidpt[ixF]
-    dxF = mbs_data.dpt[1:, idpt]
+    dxF = mbs_data.dpt[1:, idpt]  # valeur par défaut si pas un pneu
 
-    # Identification des pneus par leur nom dans le .mbs
-    try:
-        pneu_ids = [mbs_data.extforce_id[n] for n in ['F_pneu_av_g', 'F_pneu_av_d', 'F_pneu_ar_g', 'F_pneu_ar_d']]
-    except:
-        pneu_ids = []
+    wheel_names = ['F_pneu_av_g', 'F_pneu_av_d', 'F_pneu_ar_g', 'F_pneu_ar_d']
+    wheel_ids = [mbs_data.extforce_id.get(n) for n in wheel_names]
 
-    if ixF in pneu_ids:
-        # 1. Déterminer si c'est un pneu avant ou arrière pour les paramètres
-        is_front = ixF in [mbs_data.extforce_id.get('F_pneu_av_g'), mbs_data.extforce_id.get('F_pneu_av_d')]
-        
-        # Accès correct au User Model via mbs_data
-        if is_front:
-            R = mbs_data.user_model['FrontTire']['R']
-            K = mbs_data.user_model['FrontTire']['K']
-        else:
-            R = mbs_data.user_model['RearTire']['R']
-            K = mbs_data.user_model['RearTire']['K']
-            
-        D = 50000.0 # Amortissement pour stabiliser la voiture
+    if ixF in wheel_ids:
+        K_tire = 200000.0  # [N/m] raideur verticale pneu
+        R_tire = 0.295     # [m]   rayon nominal pneu MX-5
 
-        # 2. Gestion du SOL & BOSSE
-        x_wheel = PxF[1]
-        z_sol = 0.0
-        # Exemple : Bosse de 10cm entre x=10m et x=12m
-        if 10.0 <= x_wheel <= 12.0:
-            z_sol = -0.10 # Monter = Z diminue car gravité à +9.81
+        # --- ETAPE 1 : Cinématique du contact ---
+        pen, rz, angslip, angcamb, slip, Pct, Vmct, Rt_ground, dxF_tgc = \
+            tgc_car_kine_wheel(PxF, RxF, VxF, OMxF, R_tire)
 
-        # 3. Pénétration (Z vers le bas)
-        z_pneu_bas = PxF[3] + R
-        pen = z_pneu_bas - z_sol
+ 
+
+
+        # Correction d'indice (annonce profs du 4 mars)
+        dxF_tgc[0:3] = dxF_tgc[1:4]
+        dxF = dxF_tgc[0:3]
+
+        # --- ETAPE 2 : Force normale (ressort unilatéral) ---
+        Fwhl = np.zeros(4)  # forces dans repère [T]
+        Mwhl = np.zeros(4)  # moments dans repère [T]
 
         if pen > 0:
-            # La force Fz doit être négative pour pousser vers le haut contre la gravité
-            Fz = - (K * pen + D * VxF[3])
-            
-            # Sécurité : la route ne peut que pousser, pas aspirer
-            if Fz > 0: 
-                Fz = 0.0
-        else:
-            Fz = 0.0
+            Fwhl[3] = K_tire * pen  # force normale Fz dans [T]
+
+            # --- ETAPE 3 : Forces tangentielles Bakker-Pacejka ---
+            # Uniquement si le véhicule est en mouvement (slip infini si v=0)
+            v_long = abs(VxF[1])
+            if v_long > 0.5:  # seuil [m/s] : en dessous, on applique seulement Fz
+                tgc_bakker_contact(Fwhl, Mwhl, angslip, angcamb, slip)
+                # tgc_bakker_contact remplit Fwhl et Mwhl en place, pas de retour
+
+        # --- ETAPE 4 : Changement de base [T] -> [I] ---
+        # Rt_ground = R_{I<-T}, donc matrix_vector_product(Rt_ground, vec_T) = vec_I
+        F_inertial = matrix_vector_product(Rt_ground, Fwhl)
+        M_inertial = matrix_vector_product(Rt_ground, Mwhl)
+
+        Fx = F_inertial[1]
+        Fy = F_inertial[2]
+        Fz = F_inertial[3]
+        Mx = M_inertial[1]
+        My = M_inertial[2]
+        Mz = M_inertial[3]
 
     Swr = mbs_data.SWr[ixF]
     Swr[1:] = [Fx, Fy, Fz, Mx, My, Mz, dxF[0], dxF[1], dxF[2]]

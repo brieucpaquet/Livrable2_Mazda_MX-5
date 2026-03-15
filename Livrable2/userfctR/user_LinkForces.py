@@ -1,37 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Module for the definition of user links forces."""
-# Author: Robotran Team
-# (c) Universite catholique de Louvain, 2020
-
-
 def user_LinkForces(Z, Zd, mbs_data, tsim, identity):
-    """Compute the force in the given link.
+    um = mbs_data.user_model
 
-    Parameters
-    ----------
-    Z : float
-        The distance between the two anchor points of the link.
-    Zd : float
-        The relative velocity between the two anchor points of the link.
-    mbs_data : MBsysPy.MbsData
-        The multibody system associated to this computation.
-    tsim : float
-        The current time of the simulation.
-    identity : int
-        The identity of the computed link.
+    # identity 1 = Link_0 (AV_D), identity 2 = Link_1 (AV_G) → avant
+    # identity 3 = Link_2 (AR_G), identity 4 = Link_3 (AR_D) → arrière
+    if identity in [1, 2]:
+        K = um['FrontSuspension']['K']   # 25000 N/m
+        C = um['FrontSuspension']['C']   # 2000 N.s/m
+    else:
+        K = um['RearSuspension']['K']    # 22000 N/m
+        C = um['RearSuspension']['C']    # 2000 N.s/m
 
-    Returns
-    -------
-    Flink : float
-        The force in the current link.
+    Z0 = 0.510784  # longueur naturelle [m] = longueur à q=0
 
-    """
-
-    Flink = 0.0
-
-    # Example: linear spring
-    # k = 1000 #N/m
-    # Z0= 0.1  #m
-    # Flink = k*(Z-Z0)
+    Flink = K * (Z - Z0) + C * Zd
 
     return Flink
