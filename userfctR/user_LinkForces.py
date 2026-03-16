@@ -7,11 +7,11 @@ def user_LinkForces(Z, Zd, mbs_data, tsim, identity):
     if identity in [1, 2]:
         K = um['FrontSuspension']['K']   # 25000 N/m
         C = um['FrontSuspension']['C']   # 2000 N.s/m
+        Z0 = 0.510784  # longueur naturelle [m] pour l'AVANT (on ne touche pas)
     else:
         K = um['RearSuspension']['K']    # 22000 N/m
         C = um['RearSuspension']['C']    # 2000 N.s/m
-
-    Z0 = 0.510784  # longueur naturelle [m] = longueur à q=0
+        Z0 = 0.650000  # <-- NOUVEAU : On allonge artificiellement le ressort ARRIÈRE
 
     Flink = K * (Z - Z0) + C * Zd
 
